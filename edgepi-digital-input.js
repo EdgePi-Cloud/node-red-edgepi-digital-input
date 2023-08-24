@@ -8,11 +8,12 @@ module.exports = function (RED) {
       const ipc_transport = "ipc:///tmp/edgepi.pipe"
       const tcp_transport = `tcp://${config.tcpAddress}:${config.tcpPort}`
       const transport = (config.transport === "Network") ? tcp_transport : ipc_transport;  
+      node.DinPin = config.DinPin;
     
       // init new din instance
-      const relay = new rpc.DinService(transport)
+      const din = new rpc.DinService(transport)
   
-      if (relay){
+      if (din){
         console.info("Digital Input node initialized on:", transport);
         node.status({fill:"green", shape:"ring", text:"d-in initialized"});
       }
@@ -21,7 +22,7 @@ module.exports = function (RED) {
       node.on('input', async function(msg,send,done){
         node.status({fill:"green", shape:"dot", text:"input recieved"});
         try{
-          //const response = await relay[energize]();
+          const response = await din.digital_input_state(rpc.DINPins[node.DinPin])
           msg.payload = response;
         }
         catch(error){

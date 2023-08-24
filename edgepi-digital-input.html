@@ -7,6 +7,7 @@
     transport: { value: "Local" },
     tcpAddress: { value: "" },
     tcpPort: { value: "" },
+    DinPin: { value: "DIN1"}
 		},
 		inputs:1,
 		outputs:1,
@@ -81,6 +82,19 @@
     <input class ="tcp-address-input" type="text" id="node-input-tcpAddress" placeholder="IP Address">
     <label class="tcp-port-label" for="node-input-tcpPort">:</label>
     <input class="tcp-port-input" type="text" id="node-input-tcpPort" placeholder="Port">
+  </div>
+  <div class="form-row">
+    <label for="node-input-DinPin">Channel</label>
+    <select id="node-input-DinPin">
+      <option value="DIN1">D-IN1</option>
+      <option value="DIN2">D-IN2</option>
+      <option value="DIN3">D-IN3</option>
+      <option value="DIN4">D-IN4</option>
+      <option value="DIN5">D-IN5</option>
+      <option value="DIN6">D-IN6</option>
+      <option value="DIN7">D-IN7</option>
+      <option value="DIN8">D-IN8</option>
+    </select>
   </div>
 </script>
 
