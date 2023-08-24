@@ -22,7 +22,7 @@ module.exports = function (RED) {
       node.on('input', async function(msg,send,done){
         node.status({fill:"green", shape:"dot", text:"input recieved"});
         try{
-          const response = await din.digital_input_state(rpc.DINPins[node.DinPin])
+          const response = await din.digitalInputState(rpc.DINPins[node.DinPin])
           msg.payload = response;
         }
         catch(error){
