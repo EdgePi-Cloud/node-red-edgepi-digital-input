@@ -98,7 +98,26 @@
   </div>
 </script>
 
-
-<script type="text/html" data-help-name="edgepi-digital-input-node">
-	<p>Node for EdgePi Digital Input</p>
+<script type="text/html" data-help-name="edgepi-relay-node">
+	<p>EdgePi digital input node that gets the state of a given input channel.</p>
+	<h3>Properties</h3>
+	<dl class="message-properties">
+		<dt> RPC Server</dt>
+		<dd>The connection to your EdgePi's RPC Server. </dd>
+    <dt>Channel</dt>
+    <dd>What channel's state you want to check.</dd>
+	</dl>
+	<h3>Inputs</h3>
+		<dl class="message-properties">
+			Any message can be used to trigger this node.
+		</dl>
+	<h3>Outputs</h3>
+		<dl class="message-properties">
+			<dt>payload <span class="property-type">boolean</span></dt>
+			<dd>The status of the given channel</dd>
+		</dl>
+	<h3>References</h3>
+		<ul>
+			<li><a href="https://github.com/edgepi-cloud/node-red-edgepi-relay">GitHub</a> -the node's github repository </li>
+		</ul>
 </script>
