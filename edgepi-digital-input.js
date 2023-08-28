@@ -36,11 +36,6 @@ module.exports = function (RED) {
           done();
         }
       });
-  
-      node.on('close', (done) => {
-        node.status({ fill: 'grey', shape: 'ring', text: 'digital input node terminated' });
-        done();
-      });
     }
     
     RED.nodes.registerType('edgepi-digital-input-node', DigitalInputNode);
