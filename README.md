@@ -22,3 +22,8 @@ Any message can be used to trigger this node.
 - **payload** *boolean*<br>
 The status of the given channel.
 
+
+**NOTE:** Currently, EdgePi nodes are only available on x86 systems.
+
+
+
