@@ -38,6 +38,6 @@ module.exports = function (RED) {
       });
     }
     
-    RED.nodes.registerType('edgepi-digital-input-node', DigitalInputNode);
+    RED.nodes.registerType('digital-in', DigitalInputNode);
     
   };
