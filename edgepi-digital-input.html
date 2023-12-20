@@ -1,76 +1,77 @@
 <script type="text/javascript">
-	RED.nodes.registerType('digital-in',{
-		category: 'EdgePi',
-		color: '#f391aa',
-		defaults: {
-		name: {value: ""},
-    transport: { value: "Local" },
-    tcpAddress: { value: "" },
-    tcpPort: { value: "" },
-    DinPin: { value: "DIN1"}
-		},
-		inputs:1,
-		outputs:1,
-	  icon: "right-arrow.svg",
-		label: function() {
-			return this.name||"digital-in";
+  RED.nodes.registerType("digital-in", {
+    category: "EdgePi",
+    color: "#f391aa",
+    defaults: {
+      name: { value: "" },
+      transport: { value: "Local" },
+      tcpAddress: { value: "" },
+      tcpPort: { value: "" },
+      DinPin: { value: "DIN1" },
     },
-    oneditprepare: function(){
-      // Query html elements
-      const configTransportSelect = document.getElementById("node-input-transport");
-      const tcpField = document.querySelector(".form-row.tcp")
+    inputs: 1,
+    outputs: 1,
+    icon: "right-arrow.svg",
+    label: function () {
+      return this.name || "digital-in";
+    },
+    oneditprepare: function () {
+      const configTransportSelect = document.getElementById(
+        "node-input-transport"
+      );
+      const tcpField = document.querySelector(".form-row.tcp");
 
-      function updateEditor(){
-				tcpField.style.display = (configTransportSelect.value === "Network") ? "flex" : "none"
+      function updateEditor() {
+        tcpField.style.display =
+          configTransportSelect.value === "Network" ? "flex" : "none";
       }
 
-      // Update and add event listener to update on user input
-      updateEditor()
+      updateEditor();
       configTransportSelect.addEventListener("change", updateEditor);
-  }
-	});
+    },
+  });
 </script>
 <script type="text/html" data-template-name="digital-in">
+  <style>
+    * {
+      box-sizing: border-box !important;
+    }
 
-    <style>
-      *{
-          box-sizing: border-box !important;
-      }
+    .form-row {
+      display: flex;
+      align-items: center;
+    }
 
-      .form-row{
-          display: flex;
-          align-items: center;
-      }
+    .form-row > label {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
 
-      .form-row>label{
-          margin-top: auto; margin-bottom: auto;
-      }
+    .form-row.tcp {
+      flex-direction: row;
+      align-items: center;
+      margin-top: -5px;
+      margin-bottom: 10px;
+    }
 
-      .form-row.tcp {
-          flex-direction: row;
-          align-items: center;
-          margin-top: -5px; margin-bottom: 10px;
-      }
+    .tcp-address-input {
+      width: 160px !important;
+      margin-left: 100px !important;
+    }
+    .tcp-port-input {
+      width: 60px !important;
+    }
 
-      .tcp-address-input{
-          width: 160px !important;
-          margin-left: 100px !important;
-      }
-      .tcp-port-input{
-          width: 60px !important;
-      }
-
-      .tcp-port-label{
-          width: 5px !important;
-          margin: auto 5px;
-      }
-
+    .tcp-port-label {
+      width: 5px !important;
+      margin: auto 5px;
+    }
   </style>
 
-	<div class="form-row name">
-		<label for="node-input-name"><i class="fa fa-tag"></i> Name:</label>
-		<input type="text" id="node-input-name" placeholder="Name">
-	</div>	
+  <div class="form-row name">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name:</label>
+    <input type="text" id="node-input-name" placeholder="Name" />
+  </div>
   <div class="form-row transport">
     <label for="node-input-transport">RPC Server:</label>
     <select id="node-input-transport">
@@ -78,10 +79,20 @@
       <option value="Network">Network</option>
     </select>
   </div>
-  <div class="form-row tcp" >
-    <input class ="tcp-address-input" type="text" id="node-input-tcpAddress" placeholder="IP Address/ Hostname">
+  <div class="form-row tcp">
+    <input
+      class="tcp-address-input"
+      type="text"
+      id="node-input-tcpAddress"
+      placeholder="IP Address/ Hostname"
+    />
     <label class="tcp-port-label" for="node-input-tcpPort">:</label>
-    <input class="tcp-port-input" type="text" id="node-input-tcpPort" placeholder="Port">
+    <input
+      class="tcp-port-input"
+      type="text"
+      id="node-input-tcpPort"
+      placeholder="Port"
+    />
   </div>
   <div class="form-row">
     <label for="node-input-DinPin">Channel:</label>
@@ -99,28 +110,37 @@
 </script>
 
 <script type="text/html" data-help-name="digital-in">
-	<p>Gets the state of a given digital input channel on the EdgePi.  
-    The output returns a boolean indicating whether or not the input  
-    channel has a voltage running.
+  <p>
+    Gets the state of a given digital input channel on the EdgePi. The output
+    returns a boolean indicating whether or not the input channel has a voltage
+    running.
   </p>
-	<h3>Properties</h3>
-	<dl class="message-properties">
-		<dt> RPC Server</dt>
-		<dd>The connection to your EdgePi's RPC Server. </dd>
+  <h3>Properties</h3>
+  <dl class="message-properties">
+    <dt>RPC Server</dt>
+    <dd>The connection to your EdgePi's RPC Server.</dd>
     <dt>Channel</dt>
     <dd>What channel's state you want to check.</dd>
-	</dl>
-	<h3>Inputs</h3>
-		<dl class="message-properties">
-			Any message can be used to trigger this node.
-		</dl>
-	<h3>Outputs</h3>
-		<dl class="message-properties">
-			<dt>payload <span class="property-type">boolean</span></dt>
-			<dd>The status of the given channel</dd>
-		</dl>
-	<h3>References</h3>
-		<ul>
-			<li><a href="https://github.com/edgepi-cloud/node-red-digital-input">GitHub</a> -the node's github repository </li>
-		</ul>
+  </dl>
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt>msg.payload<span class="property-type">number</span></dt>
+    <dd>
+      The digital input channel.
+    </dd>
+  </dl>
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>payload <span class="property-type">boolean</span></dt>
+    <dd>The status of the given channel.</dd>
+  </dl>
+  <h3>References</h3>
+  <ul>
+    <li>
+      <a href="https://github.com/edgepi-cloud/node-red-digital-input"
+        >GitHub</a
+      >
+      -the node's github repository
+    </li>
+  </ul>
 </script>

@@ -13,17 +13,12 @@ npm install @edgepi-cloud/node-red-edgepi-digital-input
 - **RPC Server**<br> 
 The connection to your EdgePi's RPC Server.
 - **Channel**<br>
-What channel's state you want to check.
+The channel to check the state on.
 
 ### Inputs
-Any message can be used to trigger this node.
+- **payload** *number*<br>
+The Digital Input channel.
 
 ### Outputs
 - **payload** *boolean*<br>
 The status of the given channel.
-
-
-**NOTE:** Currently, EdgePi nodes are only available on x86 systems.
-
-
-
