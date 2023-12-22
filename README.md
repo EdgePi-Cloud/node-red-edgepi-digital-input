@@ -19,6 +19,20 @@ The channel to check the state on.
 - **payload** *number*<br>
 The Digital Input channel.
 
+Example input:
+```
+msg {
+    "payload": 1
+}
+```
+
 ### Outputs
 - **payload** *boolean*<br>
 The status of the given channel.
+
+Example output:
+```
+msg {
+    "payload": false
+}
+```

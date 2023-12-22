@@ -7,7 +7,7 @@
       transport: { value: "Local" },
       tcpAddress: { value: "" },
       tcpPort: { value: "" },
-      DinPin: { value: "DIN1" },
+      dinPin: { value: 1 },
     },
     inputs: 1,
     outputs: 1,
@@ -97,14 +97,14 @@
   <div class="form-row">
     <label for="node-input-DinPin">Channel:</label>
     <select id="node-input-DinPin">
-      <option value="DIN1">D-IN1</option>
-      <option value="DIN2">D-IN2</option>
-      <option value="DIN3">D-IN3</option>
-      <option value="DIN4">D-IN4</option>
-      <option value="DIN5">D-IN5</option>
-      <option value="DIN6">D-IN6</option>
-      <option value="DIN7">D-IN7</option>
-      <option value="DIN8">D-IN8</option>
+      <option value=1>D-IN1</option>
+      <option value=2>D-IN2</option>
+      <option value=3>D-IN3</option>
+      <option value=4>D-IN4</option>
+      <option value=5>D-IN5</option>
+      <option value=6>D-IN6</option>
+      <option value=7>D-IN7</option>
+      <option value=8>D-IN8</option>
     </select>
   </div>
 </script>
@@ -120,13 +120,17 @@
     <dt>RPC Server</dt>
     <dd>The connection to your EdgePi's RPC Server.</dd>
     <dt>Channel</dt>
-    <dd>What channel's state you want to check.</dd>
+    <dd>The EdgePi D-IN channel to check the state for.</dd>
   </dl>
   <h3>Inputs</h3>
+  <dd>
+    Initial configuration set in the editor is applied once the node is
+    deployed. Configuration can then be dynamically set from input.
+  </dd>
   <dl class="message-properties">
     <dt>msg.payload<span class="property-type">number</span></dt>
     <dd>
-      The digital input channel.
+      The Digital Input channel.
     </dd>
   </dl>
   <h3>Outputs</h3>
