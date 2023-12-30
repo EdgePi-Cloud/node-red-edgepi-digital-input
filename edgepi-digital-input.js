@@ -11,9 +11,9 @@ module.exports = function (RED) {
         node.status({ fill: "green", shape: "dot", text: "input recieved" });
         try {
           dinPin = msg.payload ?? dinPin;
-          msg = { payload: await din.digitalInputState(dinPin-1)};
+          msg = { payload: await din.digitalInputState(dinPin - 1) };
         } catch (error) {
-          msg = {payload: error};
+          msg = { payload: error };
           console.error(error);
         }
         send(msg);
@@ -21,7 +21,7 @@ module.exports = function (RED) {
       });
     });
 
-    async function initializeNode(config) {
+    function initializeNode(config) {
       const transport =
         config.transport === "Network"
           ? `tcp://${config.tcpAddress}:${config.tcpPort}`
