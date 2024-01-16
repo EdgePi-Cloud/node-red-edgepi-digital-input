@@ -19,7 +19,6 @@
       const configTransportSelect = document.getElementById(
         "node-input-transport"
       );
-      const channelSelect = document.getElementById("node-input-channel");
       const tcpField = document.querySelector(".form-row.tcp");
 
       function updateEditor() {
@@ -29,7 +28,6 @@
 
       updateEditor();
       configTransportSelect.addEventListener("change", updateEditor);
-      channelSelect.addEventListener("change", updateEditor);
     },
     oneditsave: function () {
       this.channel = document.getElementById("node-input-channel").value;
