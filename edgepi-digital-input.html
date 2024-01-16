@@ -7,7 +7,7 @@
       transport: { value: "Local" },
       tcpAddress: { value: "" },
       tcpPort: { value: "" },
-      dinPin: { value: 1 },
+      channel: { value: "1" },
     },
     inputs: 1,
     outputs: 1,
@@ -19,6 +19,7 @@
       const configTransportSelect = document.getElementById(
         "node-input-transport"
       );
+      const channelSelect = document.getElementById("node-input-channel");
       const tcpField = document.querySelector(".form-row.tcp");
 
       function updateEditor() {
@@ -28,6 +29,10 @@
 
       updateEditor();
       configTransportSelect.addEventListener("change", updateEditor);
+      channelSelect.addEventListener("change", updateEditor);
+    },
+    oneditsave: function () {
+      this.channel = document.getElementById("node-input-channel").value;
     },
   });
 </script>
@@ -95,16 +100,16 @@
     />
   </div>
   <div class="form-row">
-    <label for="node-input-DinPin">Channel:</label>
-    <select id="node-input-DinPin">
-      <option value=1>D-IN1</option>
-      <option value=2>D-IN2</option>
-      <option value=3>D-IN3</option>
-      <option value=4>D-IN4</option>
-      <option value=5>D-IN5</option>
-      <option value=6>D-IN6</option>
-      <option value=7>D-IN7</option>
-      <option value=8>D-IN8</option>
+    <label for="node-input-channel">Channel:</label>
+    <select id="node-input-channel">
+      <option value="1">D-IN1</option>
+      <option value="2">D-IN2</option>
+      <option value="3">D-IN3</option>
+      <option value="4">D-IN4</option>
+      <option value="5">D-IN5</option>
+      <option value="6">D-IN6</option>
+      <option value="7">D-IN7</option>
+      <option value="8">D-IN8</option>
     </select>
   </div>
 </script>
@@ -129,9 +134,7 @@
   </dd>
   <dl class="message-properties">
     <dt>msg.payload<span class="property-type">number</span></dt>
-    <dd>
-      The Digital Input channel.
-    </dd>
+    <dd>The Digital Input channel.</dd>
   </dl>
   <h3>Outputs</h3>
   <dl class="message-properties">
