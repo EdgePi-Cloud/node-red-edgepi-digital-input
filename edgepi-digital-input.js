@@ -10,7 +10,10 @@ module.exports = function (RED) {
       node.on("input", async function (msg, send, done) {
         node.status({ fill: "green", shape: "dot", text: "input recieved" });
         try {
-          channel = msg.payload || channel;
+          channel =
+            msg.payload && typeof msg.payload == "number"
+              ? msg.payload
+              : channel;
           msg = { payload: await din.digitalInputState(channel - 1) };
         } catch (error) {
           msg = { payload: error };
