@@ -4,13 +4,16 @@ module.exports = function (RED) {
   function DigitalInputNode(config) {
     RED.nodes.createNode(this, config);
     const node = this;
-    let channel = parseInt(config.channel, 10);
+
+    let { channel } = config;
 
     initializeNode(config).then((din) => {
       node.on("input", async function (msg, send, done) {
         node.status({ fill: "green", shape: "dot", text: "input recieved" });
         try {
-          channel = msg.payload || channel;
+          if (msg.payload) {
+            channel = msg.payload;
+          }
           msg = { payload: await din.digitalInputState(channel - 1) };
         } catch (error) {
           msg = { payload: error };
