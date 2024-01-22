@@ -4,14 +4,17 @@ module.exports = function (RED) {
   function DigitalInputNode(config) {
     RED.nodes.createNode(this, config);
     const node = this;
-    let dinPin = config.dinPin;
+
+    let { channel } = config;
 
     initializeNode(config).then((din) => {
       node.on("input", async function (msg, send, done) {
         node.status({ fill: "green", shape: "dot", text: "input recieved" });
         try {
-          dinPin = msg.payload || dinPin;
-          msg = { payload: await din.digitalInputState(dinPin - 1) };
+          if (msg.payload) {
+            channel = msg.payload;
+          }
+          msg = { payload: await din.digitalInputState(channel - 1) };
         } catch (error) {
           msg = { payload: error };
           console.error(error);
@@ -21,7 +24,7 @@ module.exports = function (RED) {
       });
     });
 
-    function initializeNode(config) {
+    async function initializeNode(config) {
       const transport =
         config.transport === "Network"
           ? `tcp://${config.tcpAddress}:${config.tcpPort}`
