@@ -1,0 +1,80 @@
+[
+    {
+        "id": "4e58e7b28b3de20b",
+        "type": "inject",
+        "z": "aa7eb918109cfafe",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 90,
+        "y": 480,
+        "wires": [
+            [
+                "5a3d6f6f113f44ea"
+            ]
+        ]
+    },
+    {
+        "id": "5a3d6f6f113f44ea",
+        "type": "digital-in",
+        "z": "aa7eb918109cfafe",
+        "name": "",
+        "transport": "Local",
+        "tcpAddress": "",
+        "tcpPort": "5555",
+        "channel": "3",
+        "x": 360,
+        "y": 460,
+        "wires": [
+            [
+                "ff48f29f7d48df98"
+            ]
+        ]
+    },
+    {
+        "id": "ff48f29f7d48df98",
+        "type": "debug",
+        "z": "aa7eb918109cfafe",
+        "name": "debug din output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "7ea3f722a6cad1d8",
+        "type": "inject",
+        "z": "aa7eb918109cfafe",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 520,
+        "wires": [
+            [
+                "5a3d6f6f113f44ea"
+            ]
+        ]
+    }
+]
